@@ -18,11 +18,10 @@
       <file leaf-file-name="task.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/task.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="129" column="1" lean-forward="false" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
+            <state relative-caret-position="2501">
+              <caret line="151" column="5" lean-forward="false" selection-start-line="151" selection-start-column="5" selection-end-line="151" selection-end-column="5" />
               <folding>
                 <element signature="e#7#1154#0#PHP" expanded="true" />
-                <element signature="e#2005#2521#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -161,12 +160,12 @@
       <workItem from="1564768150509" duration="3920000" />
       <workItem from="1564860617034" duration="730000" />
       <workItem from="1564935668947" duration="6376000" />
-      <workItem from="1564944845319" duration="5508000" />
+      <workItem from="1564944845319" duration="8362000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16534000" />
+    <option name="totallyTimeSpent" value="19388000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -208,7 +207,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#7#1154#0#PHP" expanded="true" />
-            <element signature="e#2005#2521#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -219,7 +217,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#7#1154#0#PHP" expanded="true" />
-            <element signature="e#2005#2521#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -230,18 +227,16 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#7#1154#0#PHP" expanded="true" />
-            <element signature="e#2005#2521#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/task.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="129" column="1" lean-forward="false" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
+        <state relative-caret-position="2501">
+          <caret line="151" column="5" lean-forward="false" selection-start-line="151" selection-start-column="5" selection-end-line="151" selection-end-column="5" />
           <folding>
             <element signature="e#7#1154#0#PHP" expanded="true" />
-            <element signature="e#2005#2521#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

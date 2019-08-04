@@ -56,24 +56,6 @@ class Color
         return $matches;
     }
 
-/*    public static function explodeArrays($splitCharacter, $colorString) {
-        $search = " " . $splitCharacter . " ";
-        return explode($search, $colorString);
-    }
-
-    public static function splitColor($color) {
-        $splitCharacters = ['/', '_', '-', ',', ' '];
-
-        foreach ($splitCharacters as $splitCharacter) {
-            $explode = explode($splitCharacter, $color);
-
-            if(count($explode) > 1) {
-                return $explode;
-            }
-        }
-
-        return [];
-    }*/
 
     public static function checkMultiColors($color, $multiCheck = false) {
         $splitCharacters = ['/', '_', '-', ',', ' '];
@@ -99,64 +81,19 @@ class Color
 
     public static function checkList($color)
     {
-       /* $array = self::checkMultiColors($color);
+        $array = self::checkMultiColors($color);
 
         $match = true;
         $matches = [];
 
         foreach ($array as $item) {
-            $lowercase = mb_strtolower($item);
+            $checkPoint = self::checkPoint($item);
 
-            if (!array_key_exists($lowercase, self::$definedColors))
-                $match = false;
-            else
-                $matches[] = self::$definedColors[$lowercase];
-        }
-
-        if ($match)
-            return implode(" ", $matches);
-        else {
-            $implode = mb_strtolower(implode(" ", $array));
-
-            if (!array_key_exists($implode, self::$definedColors)) {
-                return $implode;
-            } else
-                return self::$definedColors[$implode];
-        }*/
-
-
-
-
- 
-        $pointArray = explode(".", $color);
-
-        if (count($pointArray) > 1) {
-            $keys = array_keys(self::$definedColors);
-            $multiNotFound = 0;
-            $existKey = "";
-
-            foreach ($keys as $key) {
-                $keyExplode = explode(" ", $key);
-                $firstCharacter = mb_strtolower(substr($keyExplode[0], 0, 1));
-
-                if ($firstCharacter == mb_strtolower($pointArray[0]) && $keyExplode[1] == mb_strtolower($pointArray[1])) {
-                    $multiNotFound++;
-                    $existKey = $key;
-                }
-            }
-
-            if ($multiNotFound == 1)
-                return self::$definedColors[$existKey];
-            else
-                return null;
-        } else {
-            $array = self::checkMultiColors($color);
-
-            $match = true;
-            $matches = [];
-
-            foreach ($array as $item) {
-                $lowercase = mb_strtolower($item);
+            if($checkPoint) {
+                $match = true;
+                $matches[] = $checkPoint;
+            }else {
+                $lowercase = mb_strtolower(str_replace("I", "ı", $item));
 
                 if (!array_key_exists($lowercase, self::$definedColors))
                     $match = false;
@@ -164,24 +101,23 @@ class Color
                     $matches[] = self::$definedColors[$lowercase];
             }
 
-            if ($match)
-                return implode(" ", $matches);
-            else {
-                $implode = mb_strtolower(implode(" ", $array));
-
-                if (!array_key_exists($implode, self::$definedColors)) {
-                    return $implode;
-                } else
-                    return self::$definedColors[$implode];
-            }
-
         }
 
+        if ($match)
+            return implode(" ", $matches);
+        else {
+            $implode = mb_strtolower(str_replace("I", "ı", implode(" ", $array)));
 
+            if (!array_key_exists($implode, self::$definedColors)) {
+                return $implode;
+            } else
+                return self::$definedColors[$implode];
+        }
     }
 
     public static function checkPoint($color) {
         $pointArray = explode(".", $color);
+
 
         if (count($pointArray) > 1) {
             $keys = array_keys(self::$definedColors);
@@ -190,34 +126,31 @@ class Color
 
             foreach ($keys as $key) {
                 $keyExplode = explode(" ", $key);
-                $firstCharacter = mb_strtolower(substr($keyExplode[0], 0, 1));
+                if(count($keyExplode) > 1) {
+                    $firstCharacter = mb_strtolower(substr($keyExplode[0], 0, 1));
 
-                if ($firstCharacter == mb_strtolower($pointArray[0]) && $keyExplode[1] == mb_strtolower($pointArray[1])) {
-                    $multiNotFound++;
-                    $existKey = $key;
+                    if ($firstCharacter == mb_strtolower($pointArray[0]) && self::pre_up($keyExplode[1]) == mb_strtolower($pointArray[1])) {
+                        $multiNotFound++;
+                        $existKey = $key;
+                    }
                 }
             }
 
             if ($multiNotFound == 1)
                 return self::$definedColors[$existKey];
             else
-                return null;
+                return "null";
         }
 
         return false;
     }
 
+    function pre_up($str){
+        $str = str_replace('ş', 's', $str);
+        $str = str_replace('ı', 'i', $str);
+        return $str;
+    }
 }
-
-/*$inputColors = [
-    'PETROL-MAVİSİ / SU YEŞİLİ',
-    'petrol mavi - BUZ MAVİSİ',
-    'B.MAVİSİ - S.YESILI-mavi',
-    'lila-rengi - kahverengi',
-    'KARIŞIK-RENKLİ',
-    'KAHVE RENGİ',
-    'siyah lila',
-];*/
 
 $inputColors = [
     'PETROL-MAVİSİ / SU YEŞİLİ',
