@@ -38,6 +38,15 @@ class Color
         'kahve rengi' => 'brown',
         'karışık renkli' => 'mixed',
     ];
+  
+    public static function trimDefinedColors() {
+        $trimDefinedColors = [];
+        foreach (self::$definedColors as $key => $definedColor) {
+            $trimDefinedColors[str_replace(" ", "", $key)] = $definedColor;
+        }
+
+        return $trimDefinedColors;
+    }
 
     /**
      * @param string $colorString
@@ -85,6 +94,7 @@ class Color
 
         $match = true;
         $matches = [];
+        $trimDefinedColors = self::trimDefinedColors();
 
         foreach ($array as $item) {
             $checkPoint = self::checkPoint($item);
@@ -95,10 +105,10 @@ class Color
             }else {
                 $lowercase = mb_strtolower(str_replace("I", "ı", $item));
 
-                if (!array_key_exists($lowercase, self::$definedColors))
+                if (!array_key_exists($lowercase, self::$definedColors)  && !array_key_exists($lowercase, $trimDefinedColors))
                     $match = false;
                 else
-                    $matches[] = self::$definedColors[$lowercase];
+                     $matches[] = isset(self::$definedColors[$lowercase]) ? self::$definedColors[$lowercase] : $trimDefinedColors[$lowercase];
             }
 
         }
@@ -145,7 +155,7 @@ class Color
         return false;
     }
 
-    function pre_up($str){
+    public static function pre_up($str){
         $str = str_replace('ş', 's', $str);
         $str = str_replace('ı', 'i', $str);
         return $str;
